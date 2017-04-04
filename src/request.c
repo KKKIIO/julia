@@ -276,9 +276,8 @@ int handle_response(connection_t* c) {
                 buffer_t *b = &r->rb;
                 ABORT_ON(buffer_size(b) <= 0, "buffer miss!");
                 // save buffer (trick)
-                char *temp_begin = b->begin, *temp_end = b->end;
+                char *temp_end = b->end;
                 request_clear(r);
-                b->begin = temp_begin;
                 b->end = temp_end;
                 // handle request without recv new content
                 do {

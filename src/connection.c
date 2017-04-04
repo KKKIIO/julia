@@ -80,7 +80,7 @@ void close_connection(connection_t* c) {
         }
         pool_free(&request_pool, c->r);
     } else {
-        c->r->uc = NULL;
+        // c->r->uc = NULL; // Not necessary because *expired* will do this
     }
     pool_free(&connection_pool, c);
 }
